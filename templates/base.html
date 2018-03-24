@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{% static "css/reset.css" %}">
   <link rel="stylesheet" href="{% static "css/base.css" %}">
   <link rel="stylesheet" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
   {% block stylesheet %}{% endblock %}
   <meta charset="UTF-8">
   <meta name="description" content="Raconte tes expériences et relie-les à des compétence">
@@ -22,8 +23,8 @@
 <header>
   <nav id="header-bar">
     <div>
-      <a href="">Scilicet</a>
-      <a href="">Candidats</a>
+      <a href="{% url "home" %}">Scilicet</a>
+      <a href="{% url "login" %}">Candidats</a>
       <a href="">Recruteurs</a>
       <a href="">À propos</a>
     </div>
@@ -45,7 +46,7 @@
 
 <footer>
   <div>
-    <a href="">Scilicet</a>
+    <a href="{% url "home" %}">Scilicet</a>
     <p>Raconte tes expériences et relie-les à des compétences</p>
   </div>
 
@@ -58,7 +59,7 @@
   </div>
 
   <div>
-    <p><a href="">Github</a></p>
+    <p><a href="https://github.com/Thykof/Scilicet">Github</a></p>
     <p><a href="">À propos</a></p>
     <p>Info webmaster : Nathan Seva <a href="mailto:nathan.seva@outlook.fr">nathan.seva@outlook.fr</a></p>
   </div>
