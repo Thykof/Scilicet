@@ -1,0 +1,55 @@
+html {
+  color: #535353;
+}
+
+body {
+  line-height: 1.5;
+
+}
+
+header {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  line-height: inherit;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.2em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+footer {
+  background-color: #AAA;
+  padding: 40px;
+  position: fixed;
+  bottom: 0;
+  color: black;
+  width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+footer div {
+  display: inline-block;
+  float: left;
+  width: 33%;
+}
+
+footer a {
+  margin: auto 10px;
+}
