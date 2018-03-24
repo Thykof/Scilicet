@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  overflow: hidden;
+  background-color: #FFF;
 }
 
 #header-bar div {
@@ -20,7 +20,7 @@
 
 #title {
   font-size: 3em;
-  margin: 70px 30px 30px;
+  margin: 100px 30px 30px;
   text-align: center;
 }
 
@@ -31,9 +31,14 @@
   margin: 10px;
 }
 
-section#main-section {
-  width: 80%;
+#main-section {
+  width: 100%;
   margin: auto;
-  margin-bottom: 150px;
-  padding: 20px;
+  padding: 20px 0;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

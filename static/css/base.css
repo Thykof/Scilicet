@@ -4,12 +4,11 @@ html {
 
 body {
   line-height: 1.5;
-
+  background-color: #F5F5F5;
 }
 
 header {
   width: 100%;
-  margin-bottom: 50px;
 }
 
 a {
@@ -34,10 +33,9 @@ strong {
 }
 
 footer {
+  margin-top: 25px;
   background-color: #AAA;
-  padding: 40px;
-  position: fixed;
-  bottom: 0;
+  padding: 25px;
   color: black;
   width: 100%;
   vertical-align: middle;
