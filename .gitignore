@@ -1,4 +1,5 @@
 db.sqlite3
+scilicet/private_settings.py
 
 /media
 # Byte-compiled / optimized / DLL files
