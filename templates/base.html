@@ -24,14 +24,14 @@
   <nav id="header-bar">
     <div>
       <a href="{% url "home" %}">Scilicet</a>
-      <a href="{% url "login" %}">Candidats</a>
+      <a href="{% url "candidate:login" %}">Candidats</a>
       <a href="">Recruteurs</a>
       <a href="">À propos</a>
     </div>
     <div>
       {% block member %}
-      <a href="">Connexion</a>
-      <a href="">Inscription</a>
+      <a href="{% url "candidate:login" %}">Connexion</a>
+      <a href="{% url "candidate:signin" %}">Inscription</a>
       {% endblock %}
     </div>
   </nav>
