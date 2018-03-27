@@ -1,0 +1,28 @@
+#content {
+  margin: auto;
+  width: 60%;
+  padding: 30px;
+}
+
+#content form p {
+  margin: 15px;
+}
+
+#content form input {
+  border: none;
+  padding: 5px;
+  background-color: white;
+  color: #444;
+}
+
+#content form input[type="submit"] {
+  background-color: #88F;
+}
+
+#content form input[type="submit"] {
+  cursor: pointer;
+}
+
+p.error {
+  color: #F88;
+}

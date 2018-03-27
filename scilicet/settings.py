@@ -126,3 +126,4 @@ STATICFILES_DIRS = pvsettings.STATICFILES_DIRS
 
 
 LOGIN_URL = 'candidate:login'
+LOGIN_REDIRECT_URL = 'candidate:home'

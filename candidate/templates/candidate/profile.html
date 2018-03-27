@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.get_full_name }}{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
+
+{% block section %}
+<article>
+  <div class="wrapper-h2">
+    <h2 id="h2-candidate">Espace candidat</h2>
+  </div>
+
+
+  <div>
+
+    <h2>{{ user.get_full_name }}</h2>
+    <ul>
+      <li>Username: {{ user.username }}</li>
+      <li>Bio: {{ user.profile.bio }}</li>
+    </ul>
+
+  </div>
+
+
+  <div class="wrapper-p">
+    <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
+  </div>
+
+  <div class="wrapper-button">
+    <p><a class="button" href="">Je remplis mon profil</a></p>
+    <p><a class="button" href="">Comment se faire un profil pertinent ?</a></p>
+  </div>
+</article>
+{% endblock section %}
