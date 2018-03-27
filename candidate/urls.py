@@ -11,10 +11,11 @@ app_name = 'candidate'
 urlpatterns = [
     path('connexion', views.login_view, name='login'),
     path('inscription', views.signin_view, name='signin'),
-    path('accueil', TemplateView.as_view(template_name='candidate/home.html'), name='home'),
-    path('profil', TemplateView.as_view(template_name='candidate/profile.html'), name='profile'),
+    path('accueil', views.home_view, name='home'),
+    path('profil', views.profile_view, name='profile'),
 
-    url('accounts/', include('django.contrib.auth.urls')),
+
+    #url('accounts/', include('django.contrib.auth.urls')),
     # This include:
     #accounts/login/ [name='login']
     #accounts/logout/ [name='logout']
