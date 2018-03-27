@@ -4,12 +4,35 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-from candidate.forms import SigninForm
+from candidate.forms import SigninForm, LoginForm
 from candidate.models import Profile
 
 
 def login_view(request):
-    return render(request, 'candidate/login.html')
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            last_name = form.cleaned_data["last_name"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username=last_name, password=password)
+            if user:
+                login(request, user)
+                return redirect(reverse('candidate:home'))
+            else:
+                error = 'Nope, l\'authentification a échoué :/'
+
+                return render(request, "candidate/login.html", locals())
+
+        else:  # invalid form
+            error = 'Nope, le formulaire n\'est pas valide :/'
+            return render(request, "candidate/login.html", locals())
+
+    else:
+        if request.user.is_authenticated:
+            return redirect(reverse('candidate:home'))
+        else:
+            form = LoginForm()
+            return render(request, "candidate/login.html", locals())
 
 def signin_view(request):
     error = ''
@@ -41,11 +64,13 @@ def signin_view(request):
                 login(request, user)
 
                 return redirect(reverse('candidate:home'))
+
             else:
                 error = 'Nope, les deux mots de passe ne sont pas identiques :/'
 
-        else:
+        else:  # invalid form
             error = 'Nope, le formulaire n\'est pas valide :/'
+
     else:  # method = GET
         form = SigninForm()
 

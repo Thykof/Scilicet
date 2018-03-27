@@ -10,6 +10,21 @@
     <h2 id="h2-candidate">Espace candidat</h2>
   </div>
 
+
+  <div id="content">
+    <div id="form-wrapper">
+    <form method="post" action="{% url "candidate:login" %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Se connecter</button>
+    </form>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    </div>
+  </div>
+
+
   <div class="wrapper-p">
     <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
   </div>
