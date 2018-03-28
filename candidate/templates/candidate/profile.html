@@ -4,6 +4,11 @@
 {% block title %}{{ user.profile.get_name }}{% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
 
+{% block member %}
+<a href="{% url "candidate:home" %}">Accueil</a>
+<a href="{% url "candidate:logout" %}">Deconnection</a>
+{% endblock %}
+
 {% block section %}
 <article>
   <div class="wrapper-h2">

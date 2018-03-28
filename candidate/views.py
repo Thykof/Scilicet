@@ -83,3 +83,8 @@ def home_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'candidate/profile.html', locals())
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect(reverse('home'))

@@ -13,6 +13,7 @@ urlpatterns = [
     path('inscription', views.signin_view, name='signin'),
     path('accueil', views.home_view, name='home'),
     path('profil', views.profile_view, name='profile'),
+    path('deconnexion', views.logout_view, name='logout'),
 
 
     #url('accounts/', include('django.contrib.auth.urls')),
