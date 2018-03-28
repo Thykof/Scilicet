@@ -14,5 +14,5 @@ class SigninForm(forms.Form):
     email = forms.EmailField(label="Adresse mail")
 
 class LoginForm(forms.Form):
-    last_name = forms.CharField(label="Nom", max_length=30)
+    email = forms.EmailField(label="Adresse mail")
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)

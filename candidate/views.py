@@ -12,9 +12,9 @@ def login_view(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            last_name = form.cleaned_data["last_name"]
+            email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
-            user = authenticate(username=last_name, password=password)
+            user = authenticate(username=email, password=password)
             if user:
                 login(request, user)
                 return redirect(reverse('candidate:home'))
