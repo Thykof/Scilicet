@@ -7,3 +7,6 @@ def home(request):
 
 def index(request):
     return render(request, 'base.html', locals())
+
+def howto(request):
+    return render(request, 'core/howto.html')

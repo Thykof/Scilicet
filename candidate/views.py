@@ -60,7 +60,7 @@ def signin_view(request):
                 )
                 profile.save()
 
-                user = authenticate(username=last_name, password=password)
+                user = authenticate(username=email, password=password)
                 login(request, user)
 
                 return redirect(reverse('candidate:home'))
@@ -88,3 +88,7 @@ def profile_view(request):
 def logout_view(request):
     logout(request)
     return redirect(reverse('home'))
+
+@login_required
+def fill_view(request):
+    return render(request, 'candidate/fill.html', locals())

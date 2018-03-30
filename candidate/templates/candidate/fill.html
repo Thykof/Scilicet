@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Scilicet - profil de {{ request.user.profile.first_name }} - édition{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
+
+{% block section %}
+<article>
+  <div class="wrapper-h2">
+    <h2 id="h2-candidate">Espace candidat</h2>
+  </div>
+
+
+  <div id="content">
+    <p>{{ request.user.profile.first_name }}, c'est ici que tu remplis ton profil.</p>
+
+  </div>
+
+
+  <div class="wrapper-p">
+    <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
+  </div>
+
+  <div class="wrapper-button">
+    <p><a class="button" href="">Je remplis mon profil</a></p>
+    <p><a class="button" href="">Comment se faire un profil pertinent ?</a></p>
+  </div>
+</article>
+{% endblock section %}
