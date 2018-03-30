@@ -25,3 +25,20 @@ class Profile(models.Model):
 
     def get_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+
+class Item(models.Model):
+    title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
+    description = models.TextField(max_length=10000)  # need text area widget
+
+
+class Section(Item):
+    pass
+
+class Achievement(Item):
+    pass
+
+
+class Project(Item):
+    pass
