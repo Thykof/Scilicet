@@ -4,11 +4,6 @@
 {% block title %}Scilicet - profil de {{ request.user.profile.first_name }}{% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
 
-{% block member %}
-<a href="{% url "candidate:home" %}">Accueil</a>
-<a href="{% url "candidate:logout" %}">Deconnexion</a>
-{% endblock %}
-
 {% block section %}
 <article>
   <div class="wrapper-h2">
@@ -27,8 +22,8 @@
   </div>
 
   <div class="wrapper-button">
-    <p><a class="button" href="">Je remplis mon profil</a></p>
-    <p><a class="button" href="">Comment se faire un profil pertinent ?</a></p>
+    <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p>
+    <p><a class="button" href="{% url "howto" %}">Comment se faire un profil pertinent ?</a></p>
   </div>
 </article>
 {% endblock section %}

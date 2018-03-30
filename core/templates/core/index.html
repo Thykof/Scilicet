@@ -2,7 +2,7 @@
 {% load static %}
 
 <!-- {% block title %}{% endblock %} -->
-{% block stylesheet %}<link rel="stylesheet" href="{% static "css/core.css" %}">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static "css/style.css" %}">{% endblock %}
 
 {% block section %}
 <article>
@@ -16,7 +16,7 @@
 
   <div class="wrapper-button">
     <p><a class="button" href="{% url "candidate:signin" %}">Je remplis mon profil</a></p>
-    <p><a class="button" href="">Comment se faire un profil pertinent ?</a></p>
+    <p><a class="button" href="{% url "howto" %}">Comment se faire un profil pertinent ?</a></p>
   </div>
 </article>
 <article>
