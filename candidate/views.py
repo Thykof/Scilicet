@@ -53,11 +53,11 @@ def signin_view(request):
                     return render(request, 'candidate/signin.html', locals())
 
             if password == password_nd:
-                user = User.objects.create_user(last_name, email, password)
-                profile = Profile(user=user,
-                                  first_name=first_name,
-                                  last_name=last_name,
+                user = User.objects.create_user(last_name, email, password,
+                                                first_name=first_name,
+                                                last_name=last_name,
                 )
+                profile = Profile(user=user)
                 profile.save()
 
                 user = authenticate(username=email, password=password)
