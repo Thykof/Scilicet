@@ -26,3 +26,11 @@
 p.error {
   color: #F88;
 }
+
+h2, ul {
+  margin: 15px;
+}
+
+ul {
+  padding: 10px;
+}
