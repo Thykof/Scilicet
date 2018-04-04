@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-from candidate.forms import SigninForm, LoginForm
+from candidate.forms import SigninForm, LoginForm, ModifyProfile
 from candidate.models import Profile
 
 
@@ -91,4 +91,17 @@ def logout_view(request):
 
 @login_required
 def fill_view(request):
+    error = ''
+    if request.method == 'POST':
+        form = ModifyProfile(request.POST)
+        if form.is_valid():
+            request.user.profile.bio = form.cleaned_data['bio']
+            request.user.profile.location = form.cleaned_data['location']
+            request.user.profile.birth_date = form.cleaned_data['birth_date']
+            request.user.profile.save()
+            return redirect(reverse('candidate:home'))
+        else:
+            error = 'Nope, il y a une erreur dans le formulaire.'
+    else:
+        form = ModifyProfile()
     return render(request, 'candidate/fill.html', locals())

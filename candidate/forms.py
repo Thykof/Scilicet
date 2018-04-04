@@ -16,3 +16,8 @@ class SigninForm(forms.Form):
 class LoginForm(forms.Form):
     email = forms.EmailField(label="Adresse mail")
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
+
+class ModifyProfile(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'location', 'birth_date']

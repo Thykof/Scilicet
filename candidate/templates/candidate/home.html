@@ -14,6 +14,7 @@
   <div id="content">
     <p>Heureux de te voir {{ request.user.profile.first_name }} !</p>
     <a href="{% url "candidate:profile" %}">Voir mon profil</a>
+    <a href="{% url "candidate:fill" %}">Remplir mon profil</a>
   </div>
 
 
