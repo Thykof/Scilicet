@@ -1,30 +1,11 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "candidate/candidate.html" %}
 
-{% block title %}Scilicet - profil de {{ request.user.first_name }}{% endblock %}
-{% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
+{% block title %}Scilicet - voici ton profil, {{ request.user.get_full_name }}{% endblock %}
 
-{% block section %}
-<article>
-  <div class="wrapper-h2">
-    <h2 id="h2-candidate">Espace candidat</h2>
-  </div>
-
-
-  <div id="content">
-    <p>Heureux de te voir {{ request.user.first_name }} !</p>
-    <a href="{% url "candidate:profile" %}">Voir mon profil</a>
-    <a href="{% url "candidate:fill" %}">Remplir mon profil</a>
-  </div>
-
-
-  <div class="wrapper-p">
-    <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
-  </div>
-
-  <div class="wrapper-button">
-    <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p>
-    <p><a class="button" href="{% url "howto" %}">Comment se faire un profil pertinent ?</a></p>
-  </div>
-</article>
-{% endblock section %}
+{% block candidate_content %}
+<div id="content">
+  <p>Heureux de te voir {{ request.user.first_name }} !</p>
+  <a href="{% url "candidate:profile" %}">Voir mon profil</a>
+  <a href="{% url "candidate:fill" %}">Remplir mon profil</a>
+</div>
+{% endblock %}
