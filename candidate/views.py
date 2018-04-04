@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-from candidate.forms import SigninForm, LoginForm, ModifyProfile
+from candidate.forms import SigninForm, LoginForm, ModifyProfile, ModifyUser
 from candidate.models import Profile
 
 
@@ -105,3 +105,21 @@ def fill_view(request):
     else:
         form = ModifyProfile()
     return render(request, 'candidate/fill.html', locals())
+
+@login_required
+def fill_user_view(request):
+    error = ''
+    if request.method == 'POST':
+        form = ModifyUser(request.POST)
+        if form.is_valid():
+            print(request.user.email)
+            print(form.cleaned_data['email'])
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            print(request.user.email)
+            return redirect(reverse('candidate:home'))
+        else:
+            error = 'Nope, il y a une erreur dans le formulaire.'
+    else:
+        form = ModifyUser()
+    return render(request, 'candidate/fill-user.html', locals())

@@ -1,5 +1,6 @@
 # Create your forms here.
 
+from django.utils.translation import gettext_lazy as _
 from django import forms
 
 
@@ -21,3 +22,11 @@ class ModifyProfile(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'location', 'birth_date']
+        labels = {
+            'bio': _('Bio'),
+            'location': _('Localisation'),
+            'birth_date': _('Date de naissance'),
+        }
+
+class ModifyUser(forms.Form):
+    email = forms.EmailField(label="Adresse mail")

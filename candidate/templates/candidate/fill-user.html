@@ -4,9 +4,9 @@
 
 {% block candidate_content %}
 <div id="content">
-  <p>{{ request.user.get_full_name }}, c'est ici que tu remplis ton profil.</p>
+  <p>{{ request.user.get_full_name }}, c'est ici que tu changes ton identité...</p>
   <div id="form-wrapper">
-  <form method="post" action="{% url "candidate:fill" %}">
+  <form method="post" action="{% url "candidate:fill-user" %}">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Enregistrer les modifications" />
@@ -15,7 +15,5 @@
   <p class="error">{{ error }}</p>
   {% endif %}
   </div>
-  <div>
-    <a href="{% url "candidate:fill-user" %}">Modifier mon identité</a>
 </div>
 {% endblock %}
