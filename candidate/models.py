@@ -20,10 +20,6 @@ class Profile(models.Model):
             self.birth_date,
         )
 
-    def get_name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
-
-
 class Item(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, null=True)

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Scilicet - profil de {{ request.user.profile.first_name }} - édition{% endblock %}
+{% block title %}Scilicet - profil de {{ request.user.first_name }} - édition{% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
 
 {% block section %}
@@ -12,8 +12,7 @@
 
 
   <div id="content">
-    <p>{{ request.user.profile.first_name }}, c'est ici que tu remplis ton profil.</p>
-
+    <p>{{ request.user.get_full_name }}, c'est ici que tu remplis ton profil.</p>
     <div id="form-wrapper">
     <form method="post" action="{% url "candidate:fill" %}">
 			{% csrf_token %}
