@@ -11,5 +11,27 @@
         <li>Bio: {{ user.profile.bio }}</li>
       </ul>
 
+      {% for item in request.user.profile.items.all %}
+      <div class="item">
+        <h3 id="{{ item.title }}">{{ item.title }}</h3>
+
+        {% if item.subtitle %}
+        <h2>{{ item.subtitle }}</h2>
+        {% endif %}
+        <p>{{ item.description }}</p>
+
+        <p><span class="category">{{ item.category }}</span></p>
+
+        <div>
+        {% for item_nd in request.user.profile.items.all %}
+          {% if item.category == item_nd.category and item != item_nd %}
+            <p><a href="#{{ item_nd.title }}">{{ item_nd.title }}</a></p>
+          {% endif %}
+        {% endfor %}
+        </div>
+
+      </div>
+      {% endfor %}
+
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "candidate/candidate.html" %}
 
-{% block title %}Scilicet - remplir ton profil !{% endblock %}
+{% block title %}Scilicet - remplis ton profil !{% endblock %}
 
 {% block candidate_content %}
 <div id="content">
@@ -16,6 +16,7 @@
   {% endif %}
   </div>
   <div>
-    <a href="{% url "candidate:fill-user" %}">Modifier mon identité</a>
+    <p><a href="{% url "candidate:fill-user" %}">Modifier mon identité</a></p>
+    <p><a href="{% url "candidate:add-item" %}">Ajouter une section</a></p>
 </div>
 {% endblock %}

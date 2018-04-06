@@ -22,16 +22,21 @@ class Profile(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=255)
-    subtitle = models.CharField(max_length=255, null=True)
-    description = models.TextField(max_length=10000, null=True)  # need text area widget
+    subtitle = models.CharField(max_length=255, blank=True)
+    description = models.TextField(max_length=10000, blank=True)  # need text area widget
     subitem = models.ManyToManyField('Subitem')  # list
     # must delete also every subitems when deleting an item
-    category = models.ForeignKey('Category', on_delete=None, null=True)  # TODO: null=True, on_delete=models.SET_NULL
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)  # TODO: null=True, on_delete=models.SET_NULL
+
+    def __str__(self):
+        return self.title + ' in ' + self.category.name
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
     item_related = models.BooleanField()  # True if it's a category for an item, else for a subitem
     # example: acvhievement, activity, project, contribution, hobby, voluntary work, set up, social (fb, lkd, tw...)
+
+    #p.items.filter(category=c1)  get all item in a category
 
     def __str__(self):
         return self.name

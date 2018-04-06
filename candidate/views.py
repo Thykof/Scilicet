@@ -4,13 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-from candidate.forms import SigninForm, LoginForm, ModifyProfile, ModifyUser
+from candidate import forms
 from candidate.models import Profile
 
 
 def login_view(request):
     if request.method == "POST":
-        form = LoginForm(request.POST)
+        form = forms.LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
@@ -31,13 +31,13 @@ def login_view(request):
         if request.user.is_authenticated:
             return redirect(reverse('candidate:home'))
         else:
-            form = LoginForm()
+            form = forms.LoginForm()
             return render(request, "candidate/login.html", locals())
 
 def signin_view(request):
     error = ''
     if request.method == 'POST':
-        form = SigninForm(request.POST)
+        form = forms.SigninForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data["first_name"]
             last_name = form.cleaned_data["last_name"]
@@ -72,7 +72,7 @@ def signin_view(request):
             error = 'Nope, le formulaire n\'est pas valide :/'
 
     else:  # method = GET
-        form = SigninForm()
+        form = forms.SigninForm()
 
     return render(request, 'candidate/signin.html', locals())
 
@@ -82,6 +82,13 @@ def home_view(request):
 
 @login_required
 def profile_view(request):
+    profile = request.user.profile
+    items = list()
+    for item in profile.items.all():
+        items.append((
+            item,
+            profile.items.filter(category=item.category),
+        ))
     return render(request, 'candidate/profile.html', locals())
 
 @login_required
@@ -93,7 +100,7 @@ def logout_view(request):
 def fill_view(request):
     error = ''
     if request.method == 'POST':
-        form = ModifyProfile(request.POST)
+        form = forms.ModifyProfile(request.POST)
         if form.is_valid():
             request.user.profile.bio = form.cleaned_data['bio']
             request.user.profile.location = form.cleaned_data['location']
@@ -103,26 +110,24 @@ def fill_view(request):
         else:
             error = 'Nope, il y a une erreur dans le formulaire.'
     else:
-        form = ModifyProfile()
+        form = forms.ModifyProfile()
     return render(request, 'candidate/fill.html', locals())
 
 @login_required
 def fill_user_view(request):
     error = ''
     if request.method == 'POST':
-        form = ModifyUser(request.POST)
+        form = forms.ModifyUser(request.POST)
         if form.is_valid():
-            print(request.user.email)
-            print(form.cleaned_data['email'])
             request.user.email = form.cleaned_data['email']
             request.user.save()
-            print(request.user.email)
             return redirect(reverse('candidate:home'))
         else:
             error = 'Nope, il y a une erreur dans le formulaire.'
     else:
-        form = ModifyUser()
+        form = forms.ModifyUser()
     return render(request, 'candidate/fill-user.html', locals())
+
 @login_required
 def add_item(request):
     error = ''
