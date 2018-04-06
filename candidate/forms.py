@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django import forms
 
 
-from candidate.models import Profile
+from candidate.models import Profile, Item
 
 
 class SigninForm(forms.Form):
@@ -30,3 +30,8 @@ class ModifyProfile(forms.ModelForm):
 
 class ModifyUser(forms.Form):
     email = forms.EmailField(label="Adresse mail")
+
+class AddItem(forms.ModelForm):
+    class Meta:
+        model = Item
+        exclude = ['subitem']

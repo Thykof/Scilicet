@@ -1,0 +1,22 @@
+{% extends "candidate/candidate.html" %}
+
+{% block title %}Scilicet - remplis ton profil !{% endblock %}
+
+{% block candidate_content %}
+<div id="content">
+
+  <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une activité à ton profil.</p>
+  <div id="form-wrapper">
+  <form method="post" action="{% url "candidate:add-item" %}">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Valider" />
+	</form>
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

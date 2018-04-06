@@ -123,3 +123,17 @@ def fill_user_view(request):
     else:
         form = ModifyUser()
     return render(request, 'candidate/fill-user.html', locals())
+@login_required
+def add_item(request):
+    error = ''
+    if request.method == 'POST':
+        form = forms.AddItem(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('candidate:fill'))
+        else:
+            error = 'Nope, il y a une erreur dans le formulaire.'
+    else:
+        form = forms.AddItem()
+
+    return render(request, 'candidate/add-item.html', locals())

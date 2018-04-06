@@ -16,6 +16,7 @@ urlpatterns = [
     path('deconnexion', views.logout_view, name='logout'),
     path('remplir', views.fill_view, name='fill'),
     path('remplir-identite', views.fill_user_view, name='fill-user'),
+    path('ajouter-section', views.add_item, name='add-item'),
 
     #url('accounts/', include('django.contrib.auth.urls')),
     # This include:
