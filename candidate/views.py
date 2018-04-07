@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 from candidate import forms
-from candidate.models import Profile
+from candidate.models import Profile, Category
 
 
 def login_view(request):
@@ -131,14 +131,16 @@ def fill_user_view(request):
 @login_required
 def add_item(request):
     error = ''
+    categories = Category.objects.all()
     if request.method == 'POST':
-        form = forms.AddItem(request.POST)
+        form = forms.AddItem(request.user.profile.categories.all(), request.POST)
         if form.is_valid():
-            form.save()
+            item = form.save()
+            request.user.profile.items.add(item)
             return redirect(reverse('candidate:fill'))
         else:
             error = 'Nope, il y a une erreur dans le formulaire.'
     else:
-        form = forms.AddItem()
+        form = forms.AddItem(request.user.profile.categories.all())
 
     return render(request, 'candidate/add-item.html', locals())
