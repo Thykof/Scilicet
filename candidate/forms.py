@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django import forms
 
 
-from candidate.models import Profile, Item
+from candidate.models import Profile, Item, Category
 
 
 class SigninForm(forms.Form):
@@ -61,4 +61,23 @@ class AddItem(forms.ModelForm):
             'category': {
                 'invalid_choice': _('Ce choix de catégorie n\'est pas valide.')
             }
+        }
+
+class AddCategory(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+        labels = {
+            'name': _('Nom'),
+        }
+        help_texts = {
+            'name': _('Donne un nom a la nouvelle catégorie.'),
+        }
+        error_messages = {
+            'name': {
+                'max_length': _("Le nom est trop long."),
+            },
+        }
+        widget = {
+            'item_related': forms.HiddenInput()
         }

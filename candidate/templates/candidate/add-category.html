@@ -7,9 +7,9 @@
 
   <section>
 
-  <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une activité à ton profil.</p>
+  <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
   <div id="form-wrapper">
-    <form method="post" action="{% url "candidate:add-item" %}">
+    <form method="post" action="{% url "candidate:add-category" %}">
       {% csrf_token %}
       {% for field in form %}
         <div class="field-wrapper">
@@ -30,7 +30,7 @@
     {% endif %}
 
     <div>
-      <h3><a href={% url "candidate:add-category" %}>Ajouter une catégory</a></h3>
+      <h3><a href={% url "candidate:add-item" %}>Ajouter une activité</a></h3>
     </div>
 
   </div>

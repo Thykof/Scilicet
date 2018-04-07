@@ -144,3 +144,19 @@ def add_item(request):
         form = forms.AddItem(request.user.profile.categories.all())
 
     return render(request, 'candidate/add-item.html', locals())
+
+@login_required
+def add_category(request):
+    error = ''
+
+    if request.method == 'POST':
+        form = forms.AddCategory(request.POST, initial={'item_related': True})
+        if form.is_valid():
+            category = form.save()
+            request.user.profile.categories.add(category)
+            return redirect(reverse('candidate:fill'))
+        else:
+            error = 'Nope, il y a une erreur dans le formulaire.'
+    else:
+        form = forms.AddCategory()
+    return render(request, 'candidate/add-category.html', locals())
