@@ -110,7 +110,7 @@ def fill_view(request):
         else:
             error = 'Nope, il y a une erreur dans le formulaire.'
     else:
-        form = forms.ModifyProfile()
+        form = forms.ModifyProfile(instance=request.user.profile)
     return render(request, 'candidate/fill.html', locals())
 
 @login_required
