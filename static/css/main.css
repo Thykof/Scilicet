@@ -1,18 +1,16 @@
-#header-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.nav-wrapper {
+  display: inline-block;
   background-color: #FFF;
+  width: 100%;
 }
-
-#header-bar div {
+.nav-wrapper nav:last-child {
+  float: right;
+}
+.header-bar {
   display: inline-block;
   margin: 0 20px;
 }
-#header-bar div:last-child {
-  float: right;
-}
-#header-bar a {
+.header-bar a {
   display: inline-block;
   padding: 30px 10px;
   margin: 0 15px;
@@ -21,7 +19,7 @@
 
 #title {
   font-size: 3em;
-  margin: 100px 30px 30px;
+  margin: 30px;
   text-align: center;
 }
 
