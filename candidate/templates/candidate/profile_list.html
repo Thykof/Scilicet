@@ -1,0 +1,26 @@
+{% extends "candidate/candidate.html" %}
+
+{% block title %}Scilicet - connexion{% endblock %}
+
+{% block candidate_content %}
+<div id="content">
+  <div id="form-wrapper">
+
+  <ul class="profile-list">
+
+    {% for profile in object_list %}
+      <li class="profile-item">
+        <a href="{% url "profile" profile.id %}">
+          <h3>{{ profile.user.get_full_name }}</h3>
+        </a>
+        <p>{{ profile.bio }}</p>
+      </li>
+    {% empty %}
+      <li>No candidate yet.</li>
+      {% endfor %}
+
+  </ul>
+
+  </div>
+</div>
+{% endblock %}

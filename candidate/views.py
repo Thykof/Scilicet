@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic import ListView, DetailView
 
 from candidate import forms
 from candidate.models import Profile, Category
@@ -80,7 +81,14 @@ def signin_view(request):
 def home_view(request):
     return render(request, 'candidate/home.html', locals())
 
-@login_required
+class ProfileList(ListView):
+    model = Profile
+    paginate_by = 5
+    #template_name = "candidate/profile-list.html"
+    #queryset = Profile.objects.all()  # only those with complete name, or at least one item
+
+
+
 def profile_view(request):
     profile = request.user.profile
     items = list()

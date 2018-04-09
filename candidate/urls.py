@@ -19,6 +19,8 @@ urlpatterns = [
     path('ajouter-section', views.add_item, name='add-item'),
     path('ajouter-categorie', views.add_category, name='add-category'),
 
+    path('parcourir', views.ProfileList.as_view(), name='profile-list'),
+
     #url('accounts/', include('django.contrib.auth.urls')),
     # This include:
     #accounts/login/ [name='login']
