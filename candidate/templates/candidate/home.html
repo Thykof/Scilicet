@@ -1,6 +1,6 @@
 {% extends "candidate/candidate.html" %}
 
-{% block title %}Scilicet - voici ton profil, {{ request.user.get_full_name }}{% endblock %}
+{% block title %}Scilicet - {{ request.user.get_full_name }}{% endblock %}
 
 {% block candidate_content %}
 <div id="content">
