@@ -36,7 +36,7 @@ urlpatterns = [
 
     # Specific generic view:
     url(
-        '^change-password/',
+        'change-password',
         auth_views.password_change,
         {'template_name': 'change-password.html'}
     ),
