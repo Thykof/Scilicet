@@ -25,7 +25,7 @@
     <div>
       <a href="{% url "home" %}">Scilicet</a>
       <a href="{% url "candidate:candidate" %}">Candidats</a>
-      <!-- <a href="#">Recruteurs</a> -->
+      <a href="{% url "candidate:profile-list" %}">Recruteurs</a>
     </div>
     <div>
       {% if request.user.is_authenticated %}

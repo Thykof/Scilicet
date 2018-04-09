@@ -1,26 +1,45 @@
-{% extends "candidate/candidate.html" %}
+{% extends "base.html" %}
+{% load static %}
 
-{% block title %}Scilicet - connexion{% endblock %}
+{% block title %}Scilicet - Parcourir{% endblock %}
 
-{% block candidate_content %}
-<div id="content">
-  <div id="form-wrapper">
+{% block stylesheet %}<link rel="stylesheet" href="{% static "css/candidate.css" %}">{% endblock %}
 
-  <ul class="profile-list">
+{% block section %}
+<article>
+  <div class="wrapper-h2">
+    <h2>Espace recruteur</h2>
+  </div>
 
-    {% for profile in object_list %}
-      <li class="profile-item">
-        <a href="{% url "profile" profile.id %}">
-          <h3>{{ profile.user.get_full_name }}</h3>
-        </a>
-        <p>{{ profile.bio }}</p>
-      </li>
-    {% empty %}
-      <li>No candidate yet.</li>
-      {% endfor %}
 
-  </ul>
+  <div id="content">
+    <div id="form-wrapper">
+
+    <ul class="profile-list">
+
+      {% for profile in object_list %}
+        <li class="profile-item">
+          <a href="{% url "profile" profile.id %}">
+            <h3>{{ profile.user.get_full_name }}</h3>
+          </a>
+          <p>{{ profile.bio }}</p>
+        </li>
+      {% empty %}
+        <li>No candidate yet.</li>
+        {% endfor %}
+
+    </ul>
+
+    </div>
+  </div>
+
+  <div class="footer">
+
+    <div class="wrapper-p">
+      <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.
+      <a href="{% url "candidate:fill" %}">Je remplis mon profil.</a></p>
+    </div>
 
   </div>
-</div>
-{% endblock %}
+</article>
+{% endblock section %}
