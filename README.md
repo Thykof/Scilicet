@@ -14,6 +14,9 @@ This project started on Mars 2018
 
 It may be ready on the 30th April 2018.
 
+## Version
+
+Current version is 1.0.0.
 
 ### License
 
