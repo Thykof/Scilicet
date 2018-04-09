@@ -87,6 +87,9 @@ class ProfileList(ListView):
     #template_name = "candidate/profile-list.html"
     #queryset = Profile.objects.all()  # only those with complete name, or at least one item
 
+class ProfileDetail(DetailView):
+    model = Profile
+    #context_data = User.objects.get(get_full_name=)
 
 
 def profile_view(request):

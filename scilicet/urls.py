@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from candidate.views import ProfileDetail
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('candidat/', include('candidate.urls')),
+    path('<int:pk>', ProfileDetail.as_view(), name="profile"),
 ]
