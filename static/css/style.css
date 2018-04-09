@@ -41,3 +41,9 @@ h2 {
   width: 60%;
   margin: auto;
 }
+
+#content {
+  margin: auto;
+  width: 60%;
+  padding: 30px;
+}

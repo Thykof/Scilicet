@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.models import User
 
 from candidate import forms
 from candidate.models import Profile, Category
@@ -77,9 +78,6 @@ def signin_view(request):
 
     return render(request, 'candidate/signin.html', locals())
 
-@login_required
-def home_view(request):
-    return render(request, 'candidate/home.html', locals())
 
 class ProfileList(ListView):
     model = Profile
@@ -101,6 +99,10 @@ def profile_view(request):
             profile.items.filter(category=item.category),
         ))
     return render(request, 'candidate/profile.html', locals())
+
+@login_required
+def home_view(request):
+    return render(request, 'candidate/home.html', locals())
 
 @login_required
 def logout_view(request):

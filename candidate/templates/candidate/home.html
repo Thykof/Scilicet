@@ -4,7 +4,7 @@
 
 {% block candidate_content %}
 <div id="content">
-  <p>Heureux de te voir {{ request.user.first_name }} !</p>
+  <p>Heureux de te voir <strong>{{ request.user.first_name }}</strong> !</p>
   <p><a href="{% url "candidate:profile" %}">Voir mon profil</a></p>
   <p><a href="{% url "candidate:fill" %}">Remplir mon profil</a></p>
 </div>

@@ -5,6 +5,8 @@
 {% block candidate_content %}
 <div id="content">
 
+  <h1>Inscription</h1>
+
   <div id="form-wrapper">
   <form method="post" action="{% url "candidate:signin" %}">
     {% csrf_token %}

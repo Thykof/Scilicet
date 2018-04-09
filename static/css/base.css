@@ -35,7 +35,6 @@ strong {
 footer {
   margin-top: 25px;
   background-color: #AAA;
-  padding: 25px;
   color: black;
   width: 100%;
   vertical-align: middle;
@@ -45,7 +44,8 @@ footer {
 footer div {
   display: inline-block;
   float: left;
-  width: 33%;
+  margin: auto;
+  padding: 20px;
 }
 
 footer a {
