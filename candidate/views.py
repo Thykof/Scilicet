@@ -107,7 +107,7 @@ def home_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect(reverse('home'))
+    return redirect(reverse('candidate:candidate'))
 
 @login_required
 def fill_view(request):

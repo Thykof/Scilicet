@@ -8,11 +8,12 @@
   <form method="post" action="{% url "candidate:login" %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Se connecter</button>
+    <input type="submit" value="Se connecter"></input>
   </form>
   {% if error %}
   <p class="error">{{ error }}</p>
   {% endif %}
   </div>
+  <p>Pas encore inscrit ? <a href="{% url "candidate:signin" %}">S'inscrire</a></p>
 </div>
 {% endblock %}
