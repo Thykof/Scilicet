@@ -35,16 +35,15 @@ footer {
   margin-top: 25px;
   background-color: #AAA;
   color: black;
-  width: 100%;
-  vertical-align: middle;
-  overflow: hidden;
+  padding: 25px;
+  text-align: center;
 }
 
 footer div {
   display: inline-block;
-  float: left;
-  margin: auto;
-  padding: 20px;
+  margin: 10px;
+  text-align: left;
+  width: 25%;
 }
 
 footer a {
