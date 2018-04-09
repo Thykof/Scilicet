@@ -11,18 +11,20 @@
 
 
   {% block candidate_content %}
+  <div id="content">
+    <div class="wrapper-button">
+      <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p>
+      <p><a class="button" href="{% url "candidate:howto" %}">Comment se faire un profil pertinent ?</a></p>
+    </div>
+  </div>
   {% endblock %}
 
   <div class="footer">
 
-  <div class="wrapper-p">
-    <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
-  </div>
+    <div class="wrapper-p">
+      <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
+    </div>
 
-  <div class="wrapper-button">
-    <!-- <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p> -->
-    <p><a class="button" href="{% url "howto" %}">Comment se faire un profil pertinent ?</a></p>
   </div>
-</div>
 </article>
 {% endblock section %}

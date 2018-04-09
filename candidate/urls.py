@@ -12,6 +12,8 @@ urlpatterns = [
     path('connexion', views.login_view, name='login'),
     path('inscription', views.signin_view, name='signin'),
     path('accueil', views.home_view, name='home'),
+    path('candidat', TemplateView.as_view(template_name="candidate/candidate.html"), name='candidate'),
+    path('info', TemplateView.as_view(template_name="candidate/howto.html"), name='howto'),
     path('profil', views.profile_view, name='profile'),
     path('deconnexion', views.logout_view, name='logout'),
     path('remplir', views.fill_view, name='fill'),

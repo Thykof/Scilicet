@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "candidate/candidate.html" %}
 {% load static %}
 
 {% block title %}Scilicet - profil pertinent{% endblock %}
-{% block stylesheet %}<link rel="stylesheet" href="{% static "css/style.css" %}">{% endblock %}
 
-{% block section %}
-<article>
+{% block candidate_content %}
+<div id="content">
+
   <div class="wrapper-h2">
     <h2>Espace candidat</h2>
   </div>
@@ -17,5 +17,5 @@
     <p><em>Une compétence est développée par plusieurs expériences,<br>une expérience developpe plusieurs compétences.</em></p>
   </div>
 
-</article>
-{% endblock section %}
+</div>
+{% endblock %}
