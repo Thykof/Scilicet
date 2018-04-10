@@ -122,10 +122,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS = pvsettings.STATICFILES_DIRS
 
 
 LOGIN_URL = 'candidate:login'
 LOGIN_REDIRECT_URL = 'candidate:home'
 
 AUTHENTICATION_BACKENDS = ['candidate.backends.EmailBackend']
+
+from scilicet.private_settings import *
