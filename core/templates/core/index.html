@@ -1,29 +1,71 @@
 {% extends "base.html" %}
 {% load static %}
 
+
+
 {% block section %}
-<article>
-  <div class="wrapper-h2">
-    <h2>Espace candidat</h2>
+<div class="container header">
+  <div class="ps-main-title">
+    <h1 class="ps-maintitle">Scilicet</h1>
   </div>
+  <div class="ps-sub-title">
+    <p class="ps-subtitle">Raconte tes</p>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-  <div class="wrapper-p">
-    <p>Commence dès maintenant à remplir ton profil et <strong class="no-bold">booster</strong> tes oportunités d'embauche.</p>
-  </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <strong id="ps-achievement-word">expériences</strong>
+          </div>
 
-  <div class="wrapper-button">
-    <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p>
-    <p><a class="button" href="{% url "candidate:howto" %}">Comment se faire un profil pertinent ?</a></p>
-  </div>
-</article>
+          <div class="item">
+            <strong id="ps-achievement-word">réalisation</strong>
+          </div>
 
+          <div class="item">
+            <strong id="ps-achievement-word">projets</strong>
+          </div>
+        </div>
+      </div>
+       <p>pour mettre en valeur tes <strong>compétences</strong>.</p>
+  </div>
+</div>
 
-<article>
-  <div class="wrapper-h2">
-    <h2>Espace recruteur</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="ps-space">
+        <div class="wrapper-h2">
+          <h2>Espace candidat</h2>
+        </div>
+
+        <div class="wrapper-p">
+          <p>Commence dès maintenant à remplir ton profil et <strong>booster</strong> tes oportunités d'embauche.</p>
+        </div>
+
+        <div class="wrapper-button">
+          <p><a class="button" href="{% url "candidate:fill" %}">Je remplis mon profil</a></p>
+          <p><a class="button" href="{% url "candidate:howto" %}">Comment se faire un profil pertinent ?</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="ps-space">
+        <div class="wrapper-h2">
+          <h2>Espace recruteur</h2>
+        </div>
+
+        <div class="wrapper-p">
+          <p>Trouver le bon candidat pour <strong>booster</strong> votre équipe.</p>
+        </div>
+
+        <div class="wrapper-button">
+          <p><a class="button" href="{% url "candidate:profile-list" %}">Parcourir les profils</a></p>
+          <p><a class="button" href="#">Recherch personnaisée</a></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="wrapper-button">
-    <a class="button" href="{% url "candidate:profile-list" %}">Parcourir les profils</a>
-  </div>
-</article>
+</div>
 {% endblock section %}
