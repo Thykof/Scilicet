@@ -1,0 +1,27 @@
+.ps-navbar a {
+  font-size: 18px;
+  margin: 0 20px;
+}
+
+.ps-main-title {
+  text-align: center;
+  padding: 60px;
+}
+
+.ps-maintitle {
+  font-size: 65px;
+}
+
+.ps-sub-title {
+  text-align: center;
+  padding: 30px;
+}
+
+.ps-subtitle {
+  font-size: 25px;
+  }
+
+.ps-navbar {
+  background-color: #fff;
+  padding: 20px 0;
+}
