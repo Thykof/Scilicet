@@ -15,6 +15,11 @@
 .ps-sub-title {
   text-align: center;
   padding: 30px;
+  font-size: 18px;
+}
+
+.ps-sub-title p {
+  margin: 0;
 }
 
 .ps-subtitle {
@@ -24,4 +29,36 @@
 .ps-navbar {
   background-color: #fff;
   padding: 20px 0;
+  border: none;
+}
+
+header {
+  margin-bottom: 60px;
+}
+
+footer {
+  width: 100%;
+  margin-top: 60px;
+  background-color: #999;
+  padding: 40px;
+  font-size: 15px;
+  color: black;
+  border-top: 1px solid gray;
+}
+
+footer a {
+  color: black;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: inherit;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+footer ul li {
+  margin: 5px 0;
 }
