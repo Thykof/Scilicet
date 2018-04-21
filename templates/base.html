@@ -5,11 +5,6 @@
 
 <head>
   <title>{% block title %}Scilicet{% endblock %}</title>
-  <!-- <link rel="stylesheet" href="{% static "css/reset.css" %}">
-  <link rel="stylesheet" href="{% static "css/base.css" %}">
-  <link rel="stylesheet" href="{% static "css/main.css" %}">
-  <link rel="stylesheet" href="{% static "css/style.css" %}">
-  {% block stylesheet %}{% endblock %} -->
   <meta charset="UTF-8">
   <meta name="description" content="Raconte tes expériences et relie-les à des compétence">
   <meta name="author" content="Nathan Seva">
@@ -41,10 +36,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{% url "home" %}">Scilicet</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url "home" %}">Scilicet</a></li>
           <li><a href="{% url "candidate:candidate" %}">Candidats</a></li>
           <li><a href="{% url "candidate:profile-list" %}">Recruteurs</a></li>
         </ul>

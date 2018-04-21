@@ -21,7 +21,6 @@ body {
 
 .ps-main-title {
   text-align: center;
-  padding: 60px;
 }
 
 .ps-maintitle {
@@ -42,6 +41,13 @@ body {
   font-size: 25px;
 }
 
+.ps-title-page {
+  font-size: 50px;
+}
+
+.bio {
+  font-size: 17px;
+}
 
 .header {
   margin-bottom: 60px;
