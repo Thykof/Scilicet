@@ -2,21 +2,23 @@
 
 {% block title %}Scilicet - inscription{% endblock %}
 
+{% block title-page %}<h2 class="ps-title-page">Inscription</h2>{% endblock %}
+
 {% block candidate_content %}
-<div id="content">
-
-  <h1>Inscription</h1>
-
-  <div id="form-wrapper">
-  <form method="post" action="{% url "candidate:signin" %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="S'inscrire" />
-  </form>
-  {% if error %}
-  <p class="error">{{ error }}</p>
-  {% endif %}
+<div class="container">
+  <div class="ps-space form-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <form method="post" action="{% url "candidate:signin" %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="S'inscrire" />
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+      </div>
+    </div>
   </div>
-
 </div>
 {% endblock %}

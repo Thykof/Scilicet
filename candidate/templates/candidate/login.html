@@ -2,18 +2,27 @@
 
 {% block title %}Scilicet - connexion{% endblock %}
 
+{% block title-page %}<h2 class="ps-title-page">Connexion</h2>{% endblock %}
+
 {% block candidate_content %}
-<div id="content">
-  <div id="form-wrapper">
-  <form method="post" action="{% url "candidate:login" %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Se connecter"></input>
-  </form>
-  {% if error %}
-  <p class="error">{{ error }}</p>
-  {% endif %}
+<div class="container">
+  <div class="ps-space form-wrapper">
+  <div class="row">
+      <div class="col-md-6">
+        <form class="form-horizontal" method="post" action="{% url "candidate:login" %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Se connecter"></input>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        <p>Pas encore inscrit ?</p>
+        <p><a href="{% url "candidate:signin" %}">S'inscrire</a></p>
+      </div>
+    </div>
   </div>
-  <p>Pas encore inscrit ? <a href="{% url "candidate:signin" %}">S'inscrire</a></p>
 </div>
 {% endblock %}

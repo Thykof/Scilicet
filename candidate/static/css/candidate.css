@@ -1,31 +1,30 @@
-#content #form-wrapper p {
+.form-wrapper p {
   margin: 15px;
 }
 
-#content form input {
+.form-wrapper input {
   border: none;
   padding: 5px;
-  background-color: white;
+  background-color: #F5F5F5;
   color: #444;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
-#content form input[type="submit"] {
+.form-wrapper input[type="submit"] {
   background-color: #88F;
-}
-
-#content form input[type="submit"] {
   cursor: pointer;
 }
 
 p.error {
-  color: #F88;
+  color: red;
 }
 
-h2, ul {
+.ps-space h2, .ps-space ul {
   margin: 15px;
 }
 
-#content ul {
+.ps-space ul {
   padding: 10px;
 }
 
@@ -33,13 +32,26 @@ h2, ul {
   padding: 15px;
   border: 2px solid #88F;
   margin: 15px;
+  border-radius: 5px;
+}
+
+.category {
+  padding: 4px;
   border-radius: 2px;
+  border: 1px solid #F88;
+}
+
+.profile h1 {
+  font-size: 30px;
+  margin: auto;
+}
+.profile h2 {
+  font-size: 20px;
+  text-align: left;
+  margin-left: 5%;
+  border: none;
 }
 
 p {
   padding: 3px;
-}
-
-section .footer {
-  margin-top: 100px;
 }
