@@ -2,10 +2,21 @@
 
 {% block title %}Scilicet - {{ request.user.get_full_name }}{% endblock %}
 
+{% block title-page %}<h2 class="ps-title-page">{{ request.user.first_name }}</h2>{% endblock %}
+
 {% block candidate_content %}
-<div id="content">
-  <p>Heureux de te voir <strong>{{ request.user.first_name }}</strong> !</p>
-  <p><a href="{% url "candidate:profile" %}">Voir mon profil</a></p>
-  <p><a href="{% url "candidate:fill" %}">Remplir mon profil</a></p>
+<div class="container">
+  <div class="ps-space profile">
+    <div class="row">
+      <div class="col-md-12">
+        <p>Heureux de te voir <strong>{{ request.user.first_name }}</strong> !</p>
+        <div class="wrapper-button">
+          <p><a href="{% url "candidate:profile" %}">Voir mon profil</a></p>
+          <p><a href="{% url "candidate:fill" %}">Remplir mon profil</a></p>
+          <p><a href="{% url "candidate:howto" %}">Comment se faire un profil pertinent ?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
