@@ -3,39 +3,33 @@
 {% block title %}Scilicet - Remplis ton profil !{% endblock %}
 
 {% block candidate_content %}
-<div id="content">
+<div class="container">
+  <div class="ps-space form-wrapper">
+    <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
+      <form method="post" action="{% url "candidate:add-category" %}">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="field-wrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+              <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+          </div>
+      {% endfor %}
 
-  <section>
+      <input type="submit" value="Valider" />
+      </form>
 
-  <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
-  <div id="form-wrapper">
-    <form method="post" action="{% url "candidate:add-category" %}">
-      {% csrf_token %}
-      {% for field in form %}
-        <div class="field-wrapper">
-          {{ field.errors }}
-          {{ field.label_tag }} {{ field }}
-          {% if field.help_text %}
-            <p class="help">{{ field.help_text|safe }}</p>
-          {% endif %}
-        </div>
-    {% endfor %}
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
 
-
-    <input type="submit" value="Valider" />
-    </form>
-
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %}
-
-    <div>
-      <h3><a href={% url "candidate:add-item" %}>Ajouter une activité</a></h3>
-    </div>
+      <div class="wrapper-button">
+        <p><a class="button" href={% url "candidate:add-item" %}>Ajouter une activité</a></p>
+      </div>
 
   </div>
-  </section>
-
 </div>
 
 {% endblock %}
