@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{% static "css/recruitment.css" %}">{% endblock %}
+
+{% block section %}
+<div class="container header">
+  <div class="ps-main-title">
+    {% block title-page %}<h1 class="ps-maintitle">Recruteur</h1>{% endblock %}
+  </div>
+</div>
+{% block candidate_content %}
+{% endblock %}
+<div class="container">
+  <div class="ps-space">
+
+    <div class="wrapper-p">
+      <p>Commence dès maintenant à parcourir les profils et trouver le meilleurs <strong>collaborateur</strong>.</p>
+    </div>
+
+    <div class="wrapper-button">
+      <p><a class="button" href="{% url "recruitment:home" %}">Accueil</a></p>
+      <p><a class="button" href="{% url "recruitment:search" %}">Cherche un collaborateur</a></p>
+      <p><a class="button" href="{% url "recruitment:about" %}">À propos</a></p>
+    </div>
+
+  </div>
+</div>
+{% endblock section %}

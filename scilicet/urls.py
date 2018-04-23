@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('core.urls')),
     path('candidat/', include('candidate.urls')),
     path('<int:pk>', ProfileDetail.as_view(), name="profile"),
+    path('recruteur/', include('recruitment.urls')),
 ]
