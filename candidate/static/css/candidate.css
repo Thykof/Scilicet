@@ -21,3 +21,11 @@
   margin-left: 5%;
   border: none;
 }
+
+.profile-list li {
+  list-style-type: none;
+}
+
+.profile-list a {
+  text-decoration: none;
+}
