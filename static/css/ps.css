@@ -120,3 +120,42 @@ footer ul {
 footer ul li {
   margin: 5px 0;
 }
+
+
+/* =====
+  CANDIDATE
+===== */
+.form-wrapper p {
+  margin: 15px;
+}
+
+.form-wrapper input {
+  border: none;
+  padding: 5px;
+  background-color: #F5F5F5;
+  color: #444;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.form-wrapper input[type="submit"] {
+  background-color: #88F;
+  cursor: pointer;
+}
+
+p.error {
+  color: red;
+}
+
+.ps-space h2, .ps-space ul {
+  margin: 15px;
+}
+
+.ps-space ul {
+  padding: 10px;
+}
+
+
+p {
+  padding: 3px;
+}
