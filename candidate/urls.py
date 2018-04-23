@@ -11,7 +11,7 @@ app_name = 'candidate'
 urlpatterns = [
     path('connexion', views.login_view, name='login'),
     path('inscription', views.signin_view, name='signin'),
-    path('accueil', views.home_view, name='home'),
+    path('', views.home_view, name='home'),
     path('candidat', TemplateView.as_view(template_name="candidate/candidate.html"), name='candidate'),
     path('info', TemplateView.as_view(template_name="candidate/howto.html"), name='howto'),
     path('deconnexion', views.logout_view, name='logout'),
@@ -32,9 +32,9 @@ urlpatterns = [
     #accounts/reset/done/ [name='password_reset_complete']
 
     # Specific generic view:
-    url(
-        'change-password',
-        auth_views.password_change,
-        {'template_name': 'change-password.html'}
-    ),
+    #url(
+    #    'change-password',
+    #    auth_views.password_change,
+    #    {'template_name': 'change-password.html'}
+    #),
 ]
