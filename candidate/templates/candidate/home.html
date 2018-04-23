@@ -9,7 +9,7 @@
   <div class="ps-space">
     <p>Heureux de te voir <strong>{{ request.user.first_name }}</strong> !</p>
     <div class="wrapper-button">
-      <p><a class="button" href="{% url "candidate:profile" %}">Voir mon profil</a></p>
+      <p><a class="button" href="{% url "profile" request.user.profile.id %}">Voir mon profil</a></p>
       <p><a href="{% url "candidate:fill" %}">Remplir mon profil</a></p>
       <p><a href="{% url "candidate:howto" %}">Comment se faire un profil pertinent ?</a></p>
     </div>

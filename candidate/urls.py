@@ -14,14 +14,11 @@ urlpatterns = [
     path('accueil', views.home_view, name='home'),
     path('candidat', TemplateView.as_view(template_name="candidate/candidate.html"), name='candidate'),
     path('info', TemplateView.as_view(template_name="candidate/howto.html"), name='howto'),
-    path('profil', views.profile_view, name='profile'),
     path('deconnexion', views.logout_view, name='logout'),
     path('remplir', views.fill_view, name='fill'),
     path('remplir-identite', views.fill_user_view, name='fill-user'),
     path('ajouter-section', views.add_item, name='add-item'),
     path('ajouter-categorie', views.add_category, name='add-category'),
-
-    path('parcourir', views.ProfileList.as_view(), name='profile-list'),
 
     #url('accounts/', include('django.contrib.auth.urls')),
     # This include:
