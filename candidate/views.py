@@ -21,12 +21,12 @@ def login_view(request):
                 login(request, user)
                 return redirect(reverse('candidate:home'))
             else:
-                error = 'Nope, l\'authentification a échoué :/'
+                error = 'Ho zut ! l\'authentification a échoué :/'
 
                 return render(request, "candidate/login.html", locals())
 
         else:  # invalid form
-            error = 'Nope, le formulaire n\'est pas valide :/'
+            error = 'Ho zut ! le formulaire n\'est pas valide :/'
             return render(request, "candidate/login.html", locals())
 
     else:
@@ -49,7 +49,7 @@ def signin_view(request):
 
             for user in User.objects.all():
                 if user.email == email or user.username == last_name:
-                    error = 'Nope, cette adresse mail est déjà utilisée (*) :/'
+                    error = 'Ho zut ! cette adresse mail est déjà utilisée (*) :/'
                     # It can be caused by email OR last name
                     # because last name is used to login
                     return render(request, 'candidate/signin.html', locals())
@@ -68,10 +68,10 @@ def signin_view(request):
                 return redirect(reverse('candidate:home'))
 
             else:
-                error = 'Nope, les deux mots de passe ne sont pas identiques :/'
+                error = 'Ho zut ! les deux mots de passe ne sont pas identiques :/'
 
         else:  # invalid form
-            error = 'Nope, le formulaire n\'est pas valide :/'
+            error = 'Ho zut ! le formulaire n\'est pas valide :/'
 
     else:  # method = GET
         form = forms.SigninForm()
@@ -121,7 +121,7 @@ def fill_view(request):
             request.user.profile.save()
             return redirect(reverse('candidate:home'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
         form = forms.ModifyProfile(instance=request.user.profile)
     return render(request, 'candidate/fill.html', locals())
@@ -136,7 +136,7 @@ def fill_user_view(request):
             request.user.save()
             return redirect(reverse('candidate:home'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
         form = forms.ModifyUser()
     return render(request, 'candidate/fill-user.html', locals())
@@ -152,7 +152,7 @@ def add_item(request):
             request.user.profile.items.add(item)
             return redirect(reverse('candidate:fill'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
         form = forms.AddItem(request.user.profile.categories.all())
 
@@ -169,7 +169,7 @@ def add_category(request):
             request.user.profile.categories.add(category)
             return redirect(reverse('candidate:fill'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
         form = forms.AddCategory()
     return render(request, 'candidate/add-category.html', locals())
