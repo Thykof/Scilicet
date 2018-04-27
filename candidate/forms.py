@@ -67,7 +67,7 @@ class AddItem(forms.ModelForm):
 class AddCategory(forms.ModelForm):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['name', 'item_related']
         labels = {
             'name': _('Nom'),
         }
@@ -80,5 +80,8 @@ class AddCategory(forms.ModelForm):
             },
         }
         widget = {
-            'item_related': forms.HiddenInput()
+            'text': forms.TextInput(attrs={
+                'id': 'post-text',
+                'required': True,
+            }),
         }

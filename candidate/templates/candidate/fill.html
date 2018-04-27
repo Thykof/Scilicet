@@ -7,24 +7,86 @@
 {% block candidate_content %}
 <div class="container">
   <div class="ps-space form-wrapper">
-    <div class="wrapper-button">
-      <p><a class="button" href="{% url "candidate:add-item" %}">Ajouter une section</a></p>
-    </div>
-
-    <p>{{ request.user.get_full_name }}, c'est ici que tu remplis ton profil.</p>
-    <div id="form-wrapper">
+    <h3>Modifier les informations de bases</h3>
     <form method="post" action="{% url "candidate:fill" %}">
   		{% csrf_token %}
-  		{{ form.as_p }}
+  		{{ form_profile.as_p }}
   		<input type="submit" value="Enregistrer les modifications" />
   	</form>
     {% if error %}
     <p class="error">{{ error }}</p>
     {% endif %}
+    <div class="wrapper-button">
+      <p><a class="button" href="{% url "candidate:fill-user" %}">Modifier mon identité</a></p>
     </div>
-    <div>
-      <p><a href="{% url "candidate:fill-user" %}">Modifier mon identité</a></p>
+    <h3>Ajouter une annexe</h3>
+    <p>Une annexe peut par exmeple correspondre à un élément de ton CV. Ici, tu décris en détail cet élément
+      afin d'expliquer aux recruteus en quoi consistait ce stage/projet/emploi. Tu peux donner les enjeux,
+      les difficultés et comment tu les as surmontées, et surtout ce que tu en a tiré sur le plan des savoirs,
+      savoir-être et savoir-faire.
+    </p>
+    <p>Tu peux ensuite ranger cette activité dans un catégorie et la classer avec des tags.
+      les tags sont des mots-clés en relastion avec l'activité. Ils permettent de caractériser le contenue de la section,
+      et de améliore la navigation entre les sections lors de la lecture.
+    </p>
+    <form method="post" action="{% url "candidate:add-item" %}">
+      {% csrf_token %}
+      {% for field in form_item %}
+      <fieldset class="field-wrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+          <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+        {% if field.name == 'category' %}
+        <p><a class="button" data-toggle="modal" data-target="#form-category">Ajouter une catégorie</a></p>
+        {% endif %}
+      </fieldset>
+      <br>
+      {% endfor %}
+      <input type="submit" value="Valider" />
+    </form>
+    <!-- MODAL -->
+    <div class="modal" id="form-category">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header ps-modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Ajout d'une catégorie</h4>
+          </div>
+          <div class="modal-body ps-modal-footer">
+            <div class="ps-space form-wrapper">
+              <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
+                <form method="post" action="{% url "candidate:add-category" %}" id="post-form">
+                  {% csrf_token %}
+                  {% for field in form_category %}
+                    <div class="field-wrapper">
+                      {{ field.errors }}
+                      {{ field.label_tag }} {{ field }}
+                      {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                      {% endif %}
+                    </div>
+                {% endfor %}
+
+                <input type="submit" value="Valider" />
+                </form>
+
+                {% if error %}
+                <p class="error">{{ error }}</p>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- END MODAL -->
+    <div class="wrapper-button">
+      <p><a class="button" href="{% url "candidate:manage-tags" %}">Gérer les tags</a></p>
+    </div>
+    <h3>Modifier les sections</h3>
+
   </div>
 </div>
 {% endblock %}

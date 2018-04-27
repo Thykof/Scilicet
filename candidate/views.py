@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_http_methods
+
 
 from candidate import forms
 from candidate.models import Profile, Category
@@ -123,7 +125,9 @@ def fill_view(request):
         else:
             error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
-        form = forms.ModifyProfile(instance=request.user.profile)
+        form_profile = forms.ModifyProfile(instance=request.user.profile)
+        form_item = forms.AddItem(request.user.profile.categories.all())
+        form_category = forms.AddCategory()
     return render(request, 'candidate/fill.html', locals())
 
 @login_required
@@ -154,22 +158,22 @@ def add_item(request):
         else:
             error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
-        form = forms.AddItem(request.user.profile.categories.all())
+        return redirect(reverse('candidate:fill'))
 
     return render(request, 'candidate/add-item.html', locals())
 
+@require_http_methods(["POST"])
 @login_required
 def add_category(request):
     error = ''
-
-    if request.method == 'POST':
-        form = forms.AddCategory(request.POST, initial={'item_related': True})
-        if form.is_valid():
-            category = form.save()
-            request.user.profile.categories.add(category)
-            return redirect(reverse('candidate:fill'))
-        else:
-            error = 'Ho zut ! il y a une erreur dans le formulaire.'
+    form = forms.AddCategory(request.POST, initial={'item_related': True})
+    if form.is_valid():
+        category = form.save()
+        request.user.profile.categories.add(category)
+        return redirect(reverse('candidate:fill'))
     else:
-        form = forms.AddCategory()
-    return render(request, 'candidate/add-category.html', locals())
+        error = 'Ho zut ! il y a une erreur dans le formulaire.'
+        return redirect(reverse('candidate:fill'))
+
+def tags_view(request):
+    return redirect(reverse('candidate:add-category'))
