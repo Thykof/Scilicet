@@ -92,7 +92,29 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- <script src="{% static "bootstrap-3.3.7-dist/js/bootstrap.js" %}"></script> -->
 
-<script scr="{% static "js/custom.js" %}"></script>
+<script>
+/*
+$(".nav li").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
+*/
+
+$(document).ready(function(){
+  $('.carousel').carousel({
+    interval: 200
+  })
+
+  // Submit post on submit
+  $('#post-form').on('submit', function(event){
+      event.preventDefault();
+      console.log("form submitted!")  // sanity check
+      create_post();
+  });
+}
+)
+
+</script>
 
 </body>
 </html>
