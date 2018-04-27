@@ -28,6 +28,7 @@ class Item(models.Model):
     subitem = models.ManyToManyField('Subitem', blank=True)  # list
     # must delete also every subitems when deleting an item
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)  # TODO: null=True, on_delete=models.SET_NULL
+    tags = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         msg = self.title
@@ -41,6 +42,12 @@ class Category(models.Model):
     # example: acvhievement, activity, project, contribution, hobby, voluntary work, set up, social (fb, lkd, tw...)
 
     #p.items.filter(category=c1)  get all item in a category
+
+    def __str__(self):
+        return self.name
+
+class Tag(models.Model):
+    name = models.CharField(max_length=25)
 
     def __str__(self):
         return self.name

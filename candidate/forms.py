@@ -50,6 +50,7 @@ class AddItem(forms.ModelForm):
             'subtitle': _('Une phrase qui accroche.'),
             'description': _('Décris en détail cette activité'),
             'category': _('Classe cette activité dans une catégorie.'),
+            'tags': _('Ajoutes-y des tags'),
         }
         error_messages = {
             'title': {
