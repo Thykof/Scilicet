@@ -38,7 +38,6 @@ class Item(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    item_related = models.BooleanField()  # True if it's a category for an item, else for a subitem
     # example: acvhievement, activity, project, contribution, hobby, voluntary work, set up, social (fb, lkd, tw...)
 
     #p.items.filter(category=c1)  get all item in a category
