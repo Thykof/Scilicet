@@ -1,3 +1,6 @@
+import json
+
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -6,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
+from django.http import HttpResponse
 
 
 from candidate import forms
@@ -165,15 +169,29 @@ def add_item(request):
 @require_http_methods(["POST"])
 @login_required
 def add_category(request):
-    error = ''
-    form = forms.AddCategory(request.POST, initial={'item_related': True})
-    if form.is_valid():
-        category = form.save()
+    if request.method == 'POST':
+        category_name = request.POST.get('category_name')
+        response_data = {}
+
+        category = Category(name=category_name)
+        category.save()
+
         request.user.profile.categories.add(category)
-        return redirect(reverse('candidate:fill'))
+
+        response_data['result'] = 'Create post successful!'
+        response_data['text'] = category.name
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
     else:
-        error = 'Ho zut ! il y a une erreur dans le formulaire.'
-        return redirect(reverse('candidate:fill'))
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
+
 
 def tags_view(request):
     return redirect(reverse('candidate:add-category'))
