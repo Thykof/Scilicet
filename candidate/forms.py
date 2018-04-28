@@ -67,7 +67,7 @@ class AddItem(forms.ModelForm):
 class AddCategory(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['name', 'item_related']
+        fields = ['name',]
         labels = {
             'name': _('Nom'),
         }
@@ -79,9 +79,4 @@ class AddCategory(forms.ModelForm):
                 'max_length': _("Le nom est trop long."),
             },
         }
-        widget = {
-            'text': forms.TextInput(attrs={
-                'id': 'post-text',
-                'required': True,
-            }),
-        }
+        

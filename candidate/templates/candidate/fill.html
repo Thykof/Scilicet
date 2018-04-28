@@ -1,4 +1,5 @@
 {% extends "candidate/candidate.html" %}
+{% load static %}
 
 {% block title %}Scilicet - Remplis ton profil !{% endblock %}
 
@@ -39,7 +40,10 @@
           <p class="help">{{ field.help_text|safe }}</p>
         {% endif %}
         {% if field.name == 'category' %}
-        <p><a class="button" data-toggle="modal" data-target="#form-category">Ajouter une catégorie</a></p>
+        <br><br>
+        <div class="wrapper-button">
+          <p><a class="button" data-toggle="modal" data-target="#form-category">Ajouter une catégorie</a></p>
+        </div>
         {% endif %}
       </fieldset>
       <br>
@@ -59,15 +63,16 @@
             <div class="ps-space form-wrapper">
               <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
                 <form method="post" action="{% url "candidate:add-category" %}" id="post-form">
-                  {% csrf_token %}
+                  <!-- {% csrf_token %} -->
                   {% for field in form_category %}
-                    <div class="field-wrapper">
+                    <fieldset class="field-wrapper">
                       {{ field.errors }}
                       {{ field.label_tag }} {{ field }}
                       {% if field.help_text %}
                         <p class="help">{{ field.help_text|safe }}</p>
                       {% endif %}
-                    </div>
+                    </fieldset>
+                  <br>
                 {% endfor %}
 
                 <input type="submit" value="Valider" />
@@ -76,6 +81,7 @@
                 {% if error %}
                 <p class="error">{{ error }}</p>
                 {% endif %}
+                <div id="results"></div>
             </div>
           </div>
         </div>
@@ -90,3 +96,5 @@
   </div>
 </div>
 {% endblock %}
+
+{% block extra_footer %}<script src="{% static 'js/add-category.js' %}"></script>{% endblock %}
