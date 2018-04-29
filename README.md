@@ -16,7 +16,7 @@ It may be ready on the 30th April 2018.
 
 ## Version
 
-Current version is 1.0.1.
+Current version is 1.0.2.
 
 ### License
 
