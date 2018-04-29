@@ -194,4 +194,4 @@ def add_category(request):
 
 
 def tags_view(request):
-    return redirect(reverse('candidate:add-category'))
+    return redirect(reverse('candidate:fill'))
