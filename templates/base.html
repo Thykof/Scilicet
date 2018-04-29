@@ -21,7 +21,7 @@
   <!-- <link rel="stylesheet" href="{% static "bootstrap-3.3.7-dist/css/bootstrap-theme.css" %}"> -->
 
   <link rel="stylesheet" href="{% static "css/ps.css" %}">
-  {% block stylesheet %}{% endblock %}
+  {% block extra_header %}{% endblock %}
 
 </head>
 
@@ -83,7 +83,8 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- <script src="{% static "jquery/jquery-3.3.1.min.js" %}"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -92,7 +93,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- <script src="{% static "bootstrap-3.3.7-dist/js/bootstrap.js" %}"></script> -->
 
-<script scr="{% static "js/custom.js" %}"></script>
+<script>
+/*
+$(".nav li").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
+*/
+
+$(document).ready(function(){
+  $('.carousel').carousel({
+    interval: 200
+  })
+
+})
+
+</script>
+
+{% block extra_footer %}{% endblock %}
 
 </body>
 </html>

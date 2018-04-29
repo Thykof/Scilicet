@@ -19,6 +19,7 @@ urlpatterns = [
     path('remplir-identite', views.fill_user_view, name='fill-user'),
     path('ajouter-section', views.add_item, name='add-item'),
     path('ajouter-categorie', views.add_category, name='add-category'),
+    path('tags', views.tags_view, name="manage-tags"),
 
     #url('accounts/', include('django.contrib.auth.urls')),
     # This include:

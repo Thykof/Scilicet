@@ -1,3 +1,6 @@
+import json
+
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -5,6 +8,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_http_methods
+from django.http import HttpResponse
+
 
 from candidate import forms
 from candidate.models import Profile, Category
@@ -21,12 +27,12 @@ def login_view(request):
                 login(request, user)
                 return redirect(reverse('candidate:home'))
             else:
-                error = 'Nope, l\'authentification a échoué :/'
+                error = 'Ho zut ! l\'authentification a échoué :/'
 
                 return render(request, "candidate/login.html", locals())
 
         else:  # invalid form
-            error = 'Nope, le formulaire n\'est pas valide :/'
+            error = 'Ho zut ! le formulaire n\'est pas valide :/'
             return render(request, "candidate/login.html", locals())
 
     else:
@@ -49,7 +55,7 @@ def signin_view(request):
 
             for user in User.objects.all():
                 if user.email == email or user.username == last_name:
-                    error = 'Nope, cette adresse mail est déjà utilisée (*) :/'
+                    error = 'Ho zut ! cette adresse mail est déjà utilisée (*) :/'
                     # It can be caused by email OR last name
                     # because last name is used to login
                     return render(request, 'candidate/signin.html', locals())
@@ -68,10 +74,10 @@ def signin_view(request):
                 return redirect(reverse('candidate:home'))
 
             else:
-                error = 'Nope, les deux mots de passe ne sont pas identiques :/'
+                error = 'Ho zut ! les deux mots de passe ne sont pas identiques :/'
 
         else:  # invalid form
-            error = 'Nope, le formulaire n\'est pas valide :/'
+            error = 'Ho zut ! le formulaire n\'est pas valide :/'
 
     else:  # method = GET
         form = forms.SigninForm()
@@ -121,9 +127,11 @@ def fill_view(request):
             request.user.profile.save()
             return redirect(reverse('candidate:home'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
-        form = forms.ModifyProfile(instance=request.user.profile)
+        form_profile = forms.ModifyProfile(instance=request.user.profile)
+        form_item = forms.AddItem(request.user.profile.categories.all())
+        form_category = forms.AddCategory()
     return render(request, 'candidate/fill.html', locals())
 
 @login_required
@@ -136,7 +144,7 @@ def fill_user_view(request):
             request.user.save()
             return redirect(reverse('candidate:home'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
         form = forms.ModifyUser()
     return render(request, 'candidate/fill-user.html', locals())
@@ -152,24 +160,38 @@ def add_item(request):
             request.user.profile.items.add(item)
             return redirect(reverse('candidate:fill'))
         else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+            error = 'Ho zut ! il y a une erreur dans le formulaire.'
     else:
-        form = forms.AddItem(request.user.profile.categories.all())
+        return redirect(reverse('candidate:fill'))
 
     return render(request, 'candidate/add-item.html', locals())
 
+@require_http_methods(["POST"])
 @login_required
 def add_category(request):
-    error = ''
-
     if request.method == 'POST':
-        form = forms.AddCategory(request.POST, initial={'item_related': True})
-        if form.is_valid():
-            category = form.save()
-            request.user.profile.categories.add(category)
-            return redirect(reverse('candidate:fill'))
-        else:
-            error = 'Nope, il y a une erreur dans le formulaire.'
+        category_name = request.POST.get('category_name')
+        response_data = {}
+
+        category = Category(name=category_name)
+        category.save()
+
+        request.user.profile.categories.add(category)
+
+        response_data['result'] = 'Create post successful!'
+        response_data['text'] = category.name
+
+        return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
     else:
-        form = forms.AddCategory()
-    return render(request, 'candidate/add-category.html', locals())
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+
+
+
+def tags_view(request):
+    return redirect(reverse('candidate:fill'))

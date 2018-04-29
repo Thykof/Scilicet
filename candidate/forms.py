@@ -50,6 +50,7 @@ class AddItem(forms.ModelForm):
             'subtitle': _('Une phrase qui accroche.'),
             'description': _('Décris en détail cette activité'),
             'category': _('Classe cette activité dans une catégorie.'),
+            'tags': _('Ajoutes-y des tags'),
         }
         error_messages = {
             'title': {
@@ -66,7 +67,7 @@ class AddItem(forms.ModelForm):
 class AddCategory(forms.ModelForm):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['name',]
         labels = {
             'name': _('Nom'),
         }
@@ -78,6 +79,4 @@ class AddCategory(forms.ModelForm):
                 'max_length': _("Le nom est trop long."),
             },
         }
-        widget = {
-            'item_related': forms.HiddenInput()
-        }
+        
