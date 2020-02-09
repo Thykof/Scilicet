@@ -8,7 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, help_text="Décris-toi rapidement ici.")
     location = models.CharField(max_length=30, blank=True, help_text="Où habites-tu ?")
-    birth_date = models.DateField(null=True, blank=True, help_text="Utilise se format de date : <em>YYYY-MM-DD</em>.")
+    birth_date = models.DateField(null=True, blank=True, help_text="Utilise ce format de date : <em>YYYY-MM-DD</em>.")
 
     items = models.ManyToManyField('Item', blank=True)
     categories = models.ManyToManyField('Category', blank=True)

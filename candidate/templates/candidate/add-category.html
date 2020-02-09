@@ -5,7 +5,7 @@
 {% block candidate_content %}
 <div class="container">
   <div class="ps-space form-wrapper">
-    <p>{{ request.user.get_full_name }}, c'est ici que tu ajoute une catégorie pour tes activités.</p>
+    <p>{{ request.user.get_full_name }}, c'est ici que tu ajoutes une catégorie pour tes activités.</p>
       <form method="post" action="{% url "candidate:add-category" %}">
         {% csrf_token %}
         {% for field in form %}

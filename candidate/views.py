@@ -178,7 +178,7 @@ def add_category(request):
 
         request.user.profile.categories.add(category)
 
-        response_data['result'] = 'Create post successful!'
+        response_data['result'] = 'Create post: successful!'
         response_data['text'] = category.name
 
         return HttpResponse(

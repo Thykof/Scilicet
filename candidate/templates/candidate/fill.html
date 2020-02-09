@@ -8,7 +8,7 @@
 {% block candidate_content %}
 <div class="container">
   <div class="ps-space form-wrapper">
-    <h3>Modifier les informations de bases</h3>
+    <h3>Modifier les informations de base</h3>
     <form method="post" action="{% url "candidate:fill" %}">
   		{% csrf_token %}
   		{{ form_profile.as_p }}
@@ -21,14 +21,14 @@
       <p><a class="button" href="{% url "candidate:fill-user" %}">Modifier mon identité</a></p>
     </div>
     <h3>Ajouter une annexe</h3>
-    <p>Une annexe peut par exmeple correspondre à un élément de ton CV. Ici, tu décris en détail cet élément
+    <p>Une annexe peut par exemple correspondre à un élément de ton CV. Ici, tu décris en détail cet élément
       afin d'expliquer aux recruteus en quoi consistait ce stage/projet/emploi. Tu peux donner les enjeux,
-      les difficultés et comment tu les as surmontées, et surtout ce que tu en a tiré sur le plan des savoirs,
+      les difficultés et comment tu les as surmontées, et surtout ce que tu en as tiré sur le plan des savoirs,
       savoir-être et savoir-faire.
     </p>
-    <p>Tu peux ensuite ranger cette activité dans un catégorie et la classer avec des tags.
-      les tags sont des mots-clés en relastion avec l'activité. Ils permettent de caractériser le contenue de la section,
-      et de améliore la navigation entre les sections lors de la lecture.
+    <p>Tu peux ensuite ranger cette activité dans une catégorie et la classer avec des tags.
+      Les tags sont des mots-clés en relation avec l'activité. Ils permettent de caractériser le contenu de la section,
+      et d'améliorer la navigation entre les sections lors de la lecture.
     </p>
     <form method="post" action="{% url "candidate:add-item" %}">
       {% csrf_token %}

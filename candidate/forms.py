@@ -72,11 +72,10 @@ class AddCategory(forms.ModelForm):
             'name': _('Nom'),
         }
         help_texts = {
-            'name': _('Donne un nom a la nouvelle catégorie.'),
+            'name': _('Donne un nom à la nouvelle catégorie.'),
         }
         error_messages = {
             'name': {
                 'max_length': _("Le nom est trop long."),
             },
         }
-        
