@@ -56,7 +56,7 @@ class Subitem(models.Model):
     title = models.CharField(max_length=255)
     url = models.CharField(max_length=255, blank=True)
     description = models.TextField(max_length=10000, blank=True)  # need text area widget
-    category = models.ForeignKey('Category', on_delete=None, null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
         return self.title

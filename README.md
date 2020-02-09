@@ -21,3 +21,11 @@ Current version is 1.0.2.
 ### License
 
 This project is under the GNU General Public License version 3.
+
+
+### Set up
+
+    python3 -m venv my-env
+    source my-env/bin/activate
+    python -m pip install Django
+    python -m pip install requests

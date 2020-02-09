@@ -27,7 +27,7 @@ SECRET_KEY = pvsettings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,4 +130,4 @@ LOGIN_REDIRECT_URL = 'candidate:home'
 
 AUTHENTICATION_BACKENDS = ['candidate.backends.EmailBackend']
 
-from scilicet.private_settings import *
+# from scilicet.private_settings import *
